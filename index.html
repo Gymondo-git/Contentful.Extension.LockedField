@@ -8,10 +8,25 @@
     <link href="https://pa-contentful.netlify.app/static/css/2.ae40dfd3.chunk.css" rel="stylesheet">
     <!-- UI Extensions SDK -->
     <script src="https://contentful.github.io/ui-extensions-sdk/cf-extension-api.js"></script>
+
+    <style>
+      #lockedInputContainer {
+        margin-bottom: 8px
+      }
+
+      #lockedInput {
+        position: relative
+      }
+
+      #lockedInput:disabled {
+        background-color: #f9fafb;
+        color: #8f9dad;
+      }
+    </style>
   </head>
   <body>
-    <div style="margin-bottom: 8px" class="TextInput__TextInput___36-K- TextInput__TextInput--full___1EJEW" id="lockedInputContainer" >
-      <input style="position: relative" type="text" class="TextInput__TextInput__input___27vDB a11y__focus-border--default___60AXp" id="lockedInput"/>
+    <div class="TextInput__TextInput___36-K- TextInput__TextInput--full___1EJEW" id="lockedInputContainer" >
+      <input type="text" class="TextInput__TextInput__input___27vDB a11y__focus-border--default___60AXp" id="lockedInput"/>
     </div>
     <script>
         var ctfApi;
