@@ -3,21 +3,35 @@
   <head>
     <meta charset="UTF-8"/>
     <title>Locked field</title>
-    <!-- Contentful's default styles -->
-    <link rel="stylesheet" href="https://contentful.github.io/ui-extensions-sdk/cf-extension.css">
+    <!-- Styles extracted from Contentful website -->
+    <link href="https://pa-contentful.netlify.app/static/css/main.8ed833f1.chunk.css" rel="stylesheet">
+    <link href="https://pa-contentful.netlify.app/static/css/2.ae40dfd3.chunk.css" rel="stylesheet">
     <!-- UI Extensions SDK -->
     <script src="https://contentful.github.io/ui-extensions-sdk/cf-extension-api.js"></script>
   </head>
   <body>
-    <input type="text" class="cf-form-input" id="lockedInput"/>
+    <div class="TextInput__TextInput___36-K- TextInput__TextInput--full___1EJEW" id="lockedInputContainer" >
+      <input type="text" class="TextInput__TextInput__input___27vDB a11y__focus-border--default___60AXp" id="lockedInput"/>
+    </div>
     <script>
         var ctfApi;
         var inp;
+        var div;
+
+        function updateContainerStyle() {
+          if (inp.value?.trim()) {
+            div.classList.remove('TextInput__TextInput--negative___iVq__')
+          } else {
+            div.classList.add('TextInput__TextInput--negative___iVq__')
+          }
+        }
 
         function LockedField(ctfExt){
-           ctfApi = ctfExt;
+            updateContainerStyle()
+            ctfApi = ctfExt;
             var value = ctfApi.field.getValue();
             inp = document.querySelector("#lockedInput");
+            div = document.querySelector("#lockedInputContainer");
 
             // Set initial value
             if (value !== "" && value !== " " && value != undefined) {
@@ -32,6 +46,7 @@
         }
 
         function UpdateValue(){
+            updateContainerStyle()
             if (inp.value != ctfApi.field.getValue()) {
 
               if(ctfApi.field.type == "Integer" || ctfApi.field.type == "Number") {
