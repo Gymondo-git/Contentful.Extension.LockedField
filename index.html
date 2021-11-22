@@ -27,14 +27,13 @@
         }
 
         function LockedField(ctfExt){
-            updateContainerStyle()
             ctfApi = ctfExt;
             var value = ctfApi.field.getValue();
             inp = document.querySelector("#lockedInput");
             div = document.querySelector("#lockedInputContainer");
 
             // Set initial value
-            if (value !== "" && value !== " " && value != undefined) {
+            if (value !== "" && value !== " " && value !== undefined) {
               inp.value = value;
               inp.disabled = true;
             }
@@ -42,11 +41,11 @@
               inp.addEventListener("change", UpdateValue);
             }
 
+            updateContainerStyle()
             ctfApi.window.updateHeight();
         }
 
         function UpdateValue(){
-            updateContainerStyle()
             if (inp.value != ctfApi.field.getValue()) {
 
               if(ctfApi.field.type == "Integer" || ctfApi.field.type == "Number") {
@@ -56,6 +55,7 @@
                 ctfApi.field.setValue(inp.value);
               }
             }
+            updateContainerStyle()
          }
 
         window.contentfulExtension.init(LockedField);
